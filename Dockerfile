@@ -37,5 +37,6 @@ ENV BASEDIR=/tmp/tmux
 ENV TMUXTARGET=${BASEDIR}/local
 
 COPY --from=builder ${TMUXTARGET}/bin/tmux /usr/local/bin
-RUN apk add -U --no-cache ncurses-terminfo-base
+COPY --from=builder /usr/share/terminfo /usr/share/terminfo
+
 CMD tmux
